@@ -1,3 +1,5 @@
+import random
+
 board = ["-", "-", "-",
          "-", "-", "-",
          "-", "-", "-"]
@@ -65,22 +67,30 @@ def checkTie(board):
     global gameRunning
     if "-" not in board:
         printBoard(board)
-        print("It is a tie! End of game.")
+        print("It is a tie! End of game.\n")
         gameRunning = False
 
 def checkWin():
     global gameRunning
     if checkDiag(board) or checkHorizontal(board) or checkVertic(board):
-        print(f"The winner is {winner}")
+        print(f"The winner is {winner}!\n")
         gameRunning = False
     
 # switch between player 1 & 2
 def SwitchPlayer():
     global currentPlayer
     if currentPlayer == "X":
-        currentPlayer = "O"
+        currentPlayer = "0"
     else:
         currentPlayer = "X"
+
+# computer
+def computer(board):
+    while currentPlayer == "0":
+        position = random.randint(0, 8)
+        if board[position] == "-":
+            board[position] = "0"
+            SwitchPlayer()
 
 # check for win / tie again
 
@@ -90,4 +100,7 @@ while gameRunning:
     checkWin()
     checkTie(board)
     SwitchPlayer()
+    computer(board)
+    checkWin()
+    checkTie(board)
 
