@@ -16,13 +16,12 @@ def printBoard(board):
 
 # take player input
 def playerInput(board):
-
     #prompts user to enter number (which will be in string type initially), then converts it into an integer using int()
     inp = int(input("Enter a number 1-9: "))
     if inp >= 1 and inp <= 9 and board[inp-1] == "-":
         board[inp-1] = currentPlayer
     else:
-        print("Oops, other player has already occupied that spot!")
+        print("Oops, other player has already occupied that spot!\n")
 
 # check for win / tie
 
